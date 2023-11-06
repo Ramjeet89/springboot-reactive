@@ -63,7 +63,7 @@ public class FluxTest {
         Flux<String> stringFlux = this.fluxService.flatMap();
         StepVerifier.create(stringFlux)
                 .expectNextCount(28)
-            .verifyComplete();
+                .verifyComplete();
     }
 
     @Test
@@ -73,5 +73,29 @@ public class FluxTest {
                 .expectNextCount(5)
                 .verifyComplete();
     }
+
+    @Test
+    public void ifExampleTest() {
+        Flux<String> stringFlux = this.fluxService.ifExample(8);
+        StepVerifier.create(stringFlux)
+                .expectNextCount(4)
+                .verifyComplete();
+    }
+
+    @Test
+    public void concatExampleTest() {
+        Flux<String> stringFlux = this.fluxService.concatExample();
+        StepVerifier.create(stringFlux)
+                .expectNextCount(9)
+                .verifyComplete();
+    }
+    @Test
+    public void mergeWithExampleTest(){
+        Flux<String> stringFlux = this.fluxService.mergeWithExample().log();
+        StepVerifier.create(stringFlux)
+                .expectNextCount(9)
+                .verifyComplete();
+    }
+
 
 }
